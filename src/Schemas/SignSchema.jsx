@@ -6,8 +6,8 @@ export const SignSchema = yup.object().shape({
   password: yup
     .string("Can't be empty")
     .required("Can't be empty")
-    .max(16, "enough")
-    .min(8, "too weak"),
+    .max(17, "enough")
+    .matches(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/, "Invalid"),
 
   RepPassword: yup
     .string("Can't be empty")

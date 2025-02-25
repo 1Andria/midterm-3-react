@@ -6,5 +6,5 @@ export const LoginSchema = yup.object().shape({
   password: yup
     .string("Can't be empty")
     .required("Can't be empty")
-    .max(16, "enough"),
+    .max(17, "enough"),
 });

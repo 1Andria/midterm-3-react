@@ -39,6 +39,7 @@ function SignDiv({ goSign }) {
               regName="email"
               errors={errors}
               max={30}
+              type="email"
             />
             <Input
               placeholder="Password"
@@ -46,6 +47,7 @@ function SignDiv({ goSign }) {
               regName="password"
               errors={errors}
               max={17}
+              type="password"
             />
             <Input
               placeholder="Repeat Password"
@@ -53,6 +55,7 @@ function SignDiv({ goSign }) {
               regName="RepPassword"
               errors={errors}
               max={17}
+              type="password"
             />
             <Btn btnText="Create an account" />
           </form>

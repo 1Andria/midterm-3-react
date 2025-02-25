@@ -1,11 +1,11 @@
 import React from "react";
 
-function Input({ placeholder, register, regName, errors, max }) {
+function Input({ placeholder, register, regName, errors, max, type }) {
   return (
     <>
       <div className="maxw-[336px] relative h-[37px] border-b border-b-[#5A698F] ">
         <input
-          type="text"
+          type={type}
           className="w-full text-white text-[15px] pl-[16px] h-full focus:outline-none"
           placeholder={placeholder}
           {...register(regName)}

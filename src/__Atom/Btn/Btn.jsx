@@ -7,7 +7,7 @@ function Btn({ btnText, onClick }) {
         <button
           onClick={onClick}
           type="submit"
-          className="w-full h-full rounded-[6px] bg-[#FC4747] flex justify-center items-center text-white text-[15px] cursor-pointer  "
+          className="w-full h-full  rounded-[6px] bg-[#FC4747] flex justify-center items-center text-white text-[15px] cursor-pointer hover:bg-white hover:text-[#10141E]  "
         >
           {btnText}
         </button>

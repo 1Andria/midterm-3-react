@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Movie from "../../assets/Movie.png";
 import Input from "../../__Atom/Input/Input";
 import Btn from "../../__Atom/Btn/Btn";
@@ -12,6 +12,7 @@ function LoginDiv({ goSign, MovieSpace }) {
     register,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm({
     resolver: yupResolver(LoginSchema),
   });
@@ -19,12 +20,14 @@ function LoginDiv({ goSign, MovieSpace }) {
   const onSubmit = (data) => {
     const storedInformation = JSON.parse(localStorage.getItem("information"));
     if (
+      storedInformation &&
       storedInformation.email === data.email &&
       storedInformation.password === data.password
     ) {
       MovieSpace();
     } else {
       setFound(true);
+      reset();
     }
   };
   return (
@@ -51,6 +54,7 @@ function LoginDiv({ goSign, MovieSpace }) {
               regName="email"
               errors={errors}
               max={30}
+              type="email"
             />
             <Input
               placeholder="Password"
@@ -58,6 +62,7 @@ function LoginDiv({ goSign, MovieSpace }) {
               regName="password"
               errors={errors}
               max={17}
+              type="password"
             />
             <Btn btnText="Login to your account" />
           </form>
