@@ -30,7 +30,7 @@ function EachMovie({ movie, FavoriteMovies }) {
               className="w-[32px] flex justify-center items-center h-[32px] rounded-[50%] bg-[rgba(0,0,0,0.5)] cursor-pointer"
             >
               <div>
-                <FavoriteSvg />
+                <FavoriteSvg isActive={movie.isBookmarked} />
               </div>
             </button>
           </div>

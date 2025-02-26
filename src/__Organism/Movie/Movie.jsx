@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import SideHeader from "../../__Molecule/SideHeader/SideHeader";
 import Search from "../../__Atom/Search/Search";
 import SwiperCont from "../../__Molecule/Swiper/Swiper";
@@ -9,7 +9,17 @@ function Movie({ Data }) {
   const [movie, setMovie] = useState(false);
   const [series, setSeries] = useState(false);
   const [favorite, setFavorite] = useState(false);
-  const [movies, setMovies] = useState(Data);
+  const [movies, setMovies] = useState([]);
+
+  useEffect(() => {
+    const storedMovies = JSON.parse(localStorage.getItem("movies"));
+    if (storedMovies) {
+      setMovies(storedMovies);
+    } else {
+      setMovies(Data);
+      localStorage.setItem("movies", JSON.stringify(Data));
+    }
+  }, [Data]);
 
   function ToAll() {
     setAll(true);
@@ -36,11 +46,11 @@ function Movie({ Data }) {
     setFavorite(true);
   }
   function FavoriteMovies(title) {
-    setMovies((prevMovies) =>
-      prevMovies.map((m) =>
-        m.title === title ? { ...m, isBookmarked: !m.isBookmarked } : m
-      )
+    const updatedMovies = movies.map((m) =>
+      m.title === title ? { ...m, isBookmarked: !m.isBookmarked } : m
     );
+    setMovies(updatedMovies);
+    localStorage.setItem("movies", JSON.stringify(updatedMovies));
   }
   return (
     <>
