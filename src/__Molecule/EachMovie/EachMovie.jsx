@@ -1,15 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
 import Favorite from "../../assets/favorite.svg";
 import MovieCategory from "../../assets/Movies.svg";
 import SerieCategory from "../../assets/Series.svg";
+import Start from "../../assets/Shape.png";
 
-function EachMovie({ movie }) {
+function EachMovie({ movie, FavoriteMovies }) {
+  const [hover, setHover] = useState(null);
+
   return (
     <>
-      <div className="flex flex-col  mb-[30px]">
+      <div
+        className="flex flex-col  mb-[30px] cursor-pointer"
+        onMouseEnter={() => setHover(movie.title)}
+        onMouseLeave={() => setHover(null)}
+      >
         <div
           className="w-[280px] pr-[16px] pt-[16px] h-[174px] rounded-[8px]"
           style={{
+            opacity: hover === movie.title ? 0.8 : 1,
             backgroundImage: `url(${movie.thumbnail.regular.small})`,
             backgroundRepeat: "no-repeat",
             backgroundSize: "100%",
@@ -17,11 +25,25 @@ function EachMovie({ movie }) {
           }}
         >
           <div className="w-full flex justify-end">
-            <div className="w-[32px] flex justify-center items-center h-[32px] rounded-[50%] bg-[rgba(0,0,0,0.5)]">
+            <button
+              onClick={() => FavoriteMovies(movie.title)}
+              className="w-[32px] flex justify-center items-center h-[32px] rounded-[50%] bg-[rgba(0,0,0,0.5)] cursor-pointer"
+            >
               <img src={Favorite} alt="Favorite" />
+            </button>
+          </div>
+          <div className="w-full flex justify-center mt-[20px]">
+            <div
+              className={`w-[117px] justify-evenly flex items-center h-[48px] rounded-[28px] bg-[rgba(0,0,0,0.5)] ${
+                hover === movie.title ? "opacity-[1]" : "opacity-[0]"
+              }`}
+            >
+              <img src={Start} alt="Start_btn" />
+              <h3 className="text-[18px] text-white">Play</h3>
             </div>
           </div>
         </div>
+
         <div className=" flex flex-col gap-[3px] mt-[8px]">
           <div className="flex items-center gap-[7px] ">
             <p className="text-[15px] text-white opacity-[0.75]">

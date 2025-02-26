@@ -6,7 +6,7 @@ import Series from "../../assets/Series.svg";
 import BookMarked from "../../assets/Bookmarked.svg";
 import Person from "../../assets/Person.png";
 
-function SideHeader({ ToSeries, ToMovie, ToAll }) {
+function SideHeader({ ToSeries, ToMovie, ToAll, ToFavorite }) {
   return (
     <>
       <div className="pt-[35px] pb-[35px] w-[96px] h-[760px] rounded-[20px] bg-[#161D2F] flex flex-col items-center justify-between">
@@ -31,7 +31,12 @@ function SideHeader({ ToSeries, ToMovie, ToAll }) {
               className="cursor-pointer"
               onClick={ToSeries}
             />
-            <img src={BookMarked} alt="BookMarked" className="cursor-pointer" />
+            <img
+              src={BookMarked}
+              onClick={ToFavorite}
+              alt="BookMarked"
+              className="cursor-pointer"
+            />
           </div>
         </div>
         <img src={Person} alt="" />
