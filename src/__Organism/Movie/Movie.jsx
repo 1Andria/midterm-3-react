@@ -9,6 +9,8 @@ function Movie({ Data }) {
   const [movie, setMovie] = useState(false);
   const [series, setSeries] = useState(false);
   const [favorite, setFavorite] = useState(false);
+  const [movies, setMovies] = useState(Data);
+
   function ToAll() {
     setAll(true);
     setMovie(false);
@@ -33,8 +35,6 @@ function Movie({ Data }) {
     setSeries(false);
     setFavorite(true);
   }
-  const [movies, setMovies] = useState(Data);
-
   function FavoriteMovies(title) {
     setMovies((prevMovies) =>
       prevMovies.map((m) =>

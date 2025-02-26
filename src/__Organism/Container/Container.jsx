@@ -5,8 +5,9 @@ import Data from "../../data.json";
 import Movie from "../Movie/Movie";
 
 function Container() {
-  const [login, setLogin] = useState(false);
+  const [login, setLogin] = useState(true);
   const [sign, setSign] = useState(false);
+  const [movies, setMovies] = useState(false);
   function goSign() {
     setLogin(!login);
     setSign(!sign);
@@ -14,13 +15,14 @@ function Container() {
   function MovieSpace() {
     setLogin(false);
     setSign(false);
+    setMovies(true);
   }
 
   return (
     <>
       {login && <LoginDiv goSign={goSign} MovieSpace={MovieSpace} />}
       {sign && <SignDiv goSign={goSign} />}
-      <Movie Data={Data} />
+      {movies && <Movie Data={Data} />}
     </>
   );
 }
