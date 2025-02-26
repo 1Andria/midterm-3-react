@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import Favorite from "../../assets/favorite.svg";
 import MovieCategory from "../../assets/Movies.svg";
 import SerieCategory from "../../assets/Series.svg";
 import Start from "../../assets/Shape.png";
+import { FavoriteSvg } from "../../Icons/Favorite";
 
 function EachMovie({ movie, FavoriteMovies }) {
   const [hover, setHover] = useState(null);
@@ -29,7 +29,9 @@ function EachMovie({ movie, FavoriteMovies }) {
               onClick={() => FavoriteMovies(movie.title)}
               className="w-[32px] flex justify-center items-center h-[32px] rounded-[50%] bg-[rgba(0,0,0,0.5)] cursor-pointer"
             >
-              <img src={Favorite} alt="Favorite" />
+              <div>
+                <FavoriteSvg />
+              </div>
             </button>
           </div>
           <div className="w-full flex justify-center mt-[20px]">

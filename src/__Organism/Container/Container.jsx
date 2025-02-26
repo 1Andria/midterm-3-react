@@ -5,9 +5,9 @@ import Data from "../../data.json";
 import Movie from "../Movie/Movie";
 
 function Container() {
-  const [login, setLogin] = useState(true);
+  const [login, setLogin] = useState(false);
   const [sign, setSign] = useState(false);
-  const [movies, setMovies] = useState(false);
+  const [movies, setMovies] = useState(true);
   function goSign() {
     setLogin(!login);
     setSign(!sign);
