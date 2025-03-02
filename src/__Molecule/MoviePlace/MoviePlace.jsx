@@ -1,7 +1,18 @@
 import React from "react";
 import EachMovie from "../EachMovie/EachMovie";
 
-function MoviePlace({ Data, all, movie, serie, favorite, FavoriteMovies }) {
+function MoviePlace({
+  Data,
+  all,
+  movie,
+  serie,
+  favorite,
+  FavoriteMovies,
+  searchValue,
+}) {
+  const filteredData = Data.filter((m) =>
+    m.title.toLowerCase().includes(searchValue.toLowerCase())
+  );
   return (
     <>
       <h1 className="text-white text-[32px] mt-[40px] mb-[32px]">
@@ -10,15 +21,24 @@ function MoviePlace({ Data, all, movie, serie, favorite, FavoriteMovies }) {
         {serie && "TV series"}
       </h1>
       <div className="w-full auto pr-[36px] justify-between flex flex-wrap">
-        {all &&
-          Data.map((movie) => (
-            <EachMovie
-              movie={movie}
-              key={movie.title}
-              FavoriteMovies={FavoriteMovies}
-            />
-          ))}
-        {movie &&
+        {searchValue.length > 0
+          ? filteredData.map((movie) => (
+              <EachMovie
+                movie={movie}
+                key={movie.title}
+                FavoriteMovies={FavoriteMovies}
+              />
+            ))
+          : all &&
+            Data.map((movie) => (
+              <EachMovie
+                movie={movie}
+                key={movie.title}
+                FavoriteMovies={FavoriteMovies}
+              />
+            ))}
+        {searchValue.length === 0 &&
+          movie &&
           Data.filter((movie) => movie.category === "Movie").map((movie) => (
             <EachMovie
               movie={movie}
@@ -26,7 +46,8 @@ function MoviePlace({ Data, all, movie, serie, favorite, FavoriteMovies }) {
               FavoriteMovies={FavoriteMovies}
             />
           ))}
-        {serie &&
+        {searchValue.length === 0 &&
+          serie &&
           Data.filter((movie) => movie.category === "TV Series").map(
             (movie) => (
               <EachMovie

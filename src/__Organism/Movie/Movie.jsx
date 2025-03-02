@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import SideHeader from "../../__Molecule/SideHeader/SideHeader";
-import Search from "../../__Atom/Search/Search";
+import Search from "../../__Molecule/Search/Search";
 import SwiperCont from "../../__Molecule/Swiper/Swiper";
 import MoviePlace from "../../__Molecule/MoviePlace/MoviePlace";
 
@@ -10,6 +10,7 @@ function Movie({ Data }) {
   const [series, setSeries] = useState(false);
   const [favorite, setFavorite] = useState(false);
   const [movies, setMovies] = useState([]);
+  const [searchValue, setSearchValue] = useState("");
 
   useEffect(() => {
     const storedMovies = JSON.parse(localStorage.getItem("movies"));
@@ -52,6 +53,8 @@ function Movie({ Data }) {
     setMovies(updatedMovies);
     localStorage.setItem("movies", JSON.stringify(updatedMovies));
   }
+  console.log(searchValue);
+
   return (
     <>
       <div className="pl-[32px] w-full h-screen overflow-y-auto bg-[#10141E] gap-[36px] justify-center  flex pt-[27px]">
@@ -62,8 +65,8 @@ function Movie({ Data }) {
           ToFavorite={ToFavorite}
         />
         <div className="max-w-[1260px] w-full flex flex-col  ">
-          <Search />
-          {/* <SwiperCont Data={Data} /> */}
+          <Search setSearchValue={setSearchValue} />
+          {all && <SwiperCont Data={Data} FavoriteMovies={FavoriteMovies} />}
           <MoviePlace
             Data={movies}
             all={all}
@@ -71,6 +74,7 @@ function Movie({ Data }) {
             serie={series}
             favorite={favorite}
             FavoriteMovies={FavoriteMovies}
+            searchValue={searchValue}
           />
         </div>
       </div>

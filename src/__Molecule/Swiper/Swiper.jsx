@@ -1,21 +1,21 @@
 import React, { useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import Favorite from "../../assets/favorite.svg";
 import Start from "../../assets/Shape.png";
 import MovieCategory from "../../assets/Movies.svg";
 import SerieCategory from "../../assets/Series.svg";
+import { FavoriteSvg } from "../../Icons/Favorite";
 
 import "swiper/css";
 import "swiper/css/free-mode";
 import "swiper/css/pagination";
-function SwiperCont({ Data }) {
+function SwiperCont({ Data, FavoriteMovies }) {
   const [hover, setHover] = useState(null);
 
   return (
     <>
       <div className="w-full h-auto flex flex-col gap-[25px] mt-[35px]">
         <h1 className="text-[32px] text-white">Trending</h1>
-        <div className="w-[1350px] overflow-x-hidden h-[230px]  ">
+        <div className="w-full overflow-x-hidden h-[230px]  ">
           <Swiper
             slidesPerView={3}
             spaceBetween={30}
@@ -37,9 +37,14 @@ function SwiperCont({ Data }) {
                   }}
                 >
                   <div className="w-full flex justify-end">
-                    <div className="w-[32px] flex justify-center items-center h-[32px] rounded-[50%] bg-[rgba(0,0,0,0.5)]">
-                      <img src={Favorite} alt="Favorite" />
-                    </div>
+                    <button
+                      onClick={() => FavoriteMovies(movie.title)}
+                      className="w-[32px] flex justify-center items-center h-[32px] rounded-[50%] bg-[rgba(0,0,0,0.5)] cursor-pointer"
+                    >
+                      <div>
+                        <FavoriteSvg isActive={movie.isBookmarked} />
+                      </div>
+                    </button>
                   </div>
                   <div className="w-full flex justify-center">
                     <div

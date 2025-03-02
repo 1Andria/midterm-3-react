@@ -1,7 +1,7 @@
 import React, { useRef } from "react";
 import SearchIcon from "../../assets/search.png";
 
-function Search() {
+function Search({ setSearchValue }) {
   const InputRef = useRef(null);
 
   function FocusInput() {
@@ -20,6 +20,9 @@ function Search() {
           ref={InputRef}
           placeholder="Search for movies or TV series"
           className="w-full h-full border-b  focus:border-b-[#5A698F] border-b-transparent  focus:outline-none text-white text-[24px]"
+          onChange={(e) => {
+            setSearchValue(e.target.value);
+          }}
         ></input>
       </div>
     </>
