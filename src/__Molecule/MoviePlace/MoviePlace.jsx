@@ -16,9 +16,10 @@ function MoviePlace({
   return (
     <>
       <h1 className="text-white text-[32px] mt-[40px] mb-[32px]">
-        {all && "Recommended for you"}
-        {movie && "Movies"}
-        {serie && "TV series"}
+        {all && searchValue.length === 0 && "Recommended for you"}
+        {movie && searchValue.length === 0 && "Movies"}
+        {serie && searchValue.length === 0 && "TV series"}
+        {searchValue.length > 0 && "Results"}
       </h1>
       <div className="w-full auto pr-[36px] justify-between flex flex-wrap">
         {searchValue.length > 0
