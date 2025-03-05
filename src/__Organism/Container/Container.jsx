@@ -1,13 +1,27 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import LoginDiv from "../../__Molecule/LoginDiv/LoginDiv";
 import SignDiv from "../../__Molecule/SignDiv/SignDiv";
 import Data from "../../data.json";
 import Movie from "../Movie/Movie";
 
 function Container() {
-  const [login, setLogin] = useState(false);
+  const [login, setLogin] = useState(true);
   const [sign, setSign] = useState(false);
-  const [movies, setMovies] = useState(true);
+  const [movies, setMovies] = useState(false);
+
+  useEffect(() => {
+    const passed = localStorage.getItem("logged");
+    if (passed === "false") {
+      setLogin(false);
+      setSign(false);
+      setMovies(true);
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("logged", JSON.stringify(login));
+  }, [login]);
+
   function goSign() {
     setLogin(!login);
     setSign(!sign);

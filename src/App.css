@@ -5,3 +5,12 @@
   box-sizing: border-box;
   font-family: Outfit;
 }
+@theme {
+  --breakpoint-lg:1400px
+}
+@theme {
+  --breakpoint-xl:1230px
+}
+@theme {
+  --breakpoint-mm:760px
+}

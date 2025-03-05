@@ -10,12 +10,12 @@ function EachMovie({ movie, FavoriteMovies }) {
   return (
     <>
       <div
-        className="flex flex-col  mb-[30px] cursor-pointer"
+        className="flex flex-col max-xl:mb-[15px] max-mm:mb-[0px]  mb-[30px] cursor-pointer"
         onMouseEnter={() => setHover(movie.title)}
         onMouseLeave={() => setHover(null)}
       >
         <div
-          className="w-[280px] pr-[16px] pt-[16px] h-[174px] rounded-[8px]"
+          className="w-[280px]  max-xl:w-[220px] max-mm:w-[164px]  pr-[16px] pt-[16px] h-[174px] rounded-[8px]"
           style={{
             opacity: hover === movie.title ? 0.8 : 1,
             backgroundImage: `url(${movie.thumbnail.regular.small})`,
@@ -27,7 +27,7 @@ function EachMovie({ movie, FavoriteMovies }) {
           <div className="w-full flex justify-end">
             <button
               onClick={() => FavoriteMovies(movie.title)}
-              className="w-[32px] flex justify-center items-center h-[32px] rounded-[50%] bg-[rgba(0,0,0,0.5)] cursor-pointer"
+              className="w-[32px] max-mm:mt-[20px] flex justify-center items-center h-[32px] rounded-[50%] bg-[rgba(0,0,0,0.5)] cursor-pointer"
             >
               <div>
                 <FavoriteSvg isActive={movie.isBookmarked} />
@@ -36,7 +36,7 @@ function EachMovie({ movie, FavoriteMovies }) {
           </div>
           <div className="w-full flex justify-center mt-[20px]">
             <div
-              className={`w-[117px] justify-evenly flex items-center h-[48px] rounded-[28px] bg-[rgba(0,0,0,0.5)] ${
+              className={`w-[117px] max-mm:ml-[20px] max-mm:w-[80px] max-mm:mt-[-10px] max-mm:h-[38px] justify-evenly flex items-center h-[48px] rounded-[28px] bg-[rgba(0,0,0,0.5)] ${
                 hover === movie.title ? "opacity-[1]" : "opacity-[0]"
               }`}
             >
@@ -46,7 +46,7 @@ function EachMovie({ movie, FavoriteMovies }) {
           </div>
         </div>
 
-        <div className=" flex flex-col gap-[3px] mt-[8px]">
+        <div className=" flex flex-col gap-[3px] max-mm:mt-[-20px] mt-[8px]">
           <div className="flex items-center gap-[7px] ">
             <p className="text-[15px] text-white opacity-[0.75]">
               {movie.year}
@@ -64,7 +64,9 @@ function EachMovie({ movie, FavoriteMovies }) {
               {movie.rating}
             </p>
           </div>
-          <h1 className="text-[24px] text-white">{movie.title}</h1>
+          <h1 className="text-[24px] max-xl:text-[20px] max-mm:text-[14px] text-white">
+            {movie.title}
+          </h1>
         </div>
       </div>
     </>

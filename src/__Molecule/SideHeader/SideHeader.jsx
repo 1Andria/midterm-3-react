@@ -27,10 +27,14 @@ function SideHeader({ ToSeries, ToMovie, ToAll, ToFavorite }) {
   }
   return (
     <>
-      <div className="pt-[35px] pb-[35px] w-[96px] h-[760px] rounded-[20px] bg-[#161D2F] flex flex-col items-center justify-between">
-        <div className=" flex flex-col items-center gap-[60px]">
-          <img className="w-[32px] h-[25px]" src={MovieIcon} alt="MovieIcon" />
-          <div className=" flex flex-col gap-[30px]">
+      <div className=" max-lg:pr-[20px] max-lg:pl-[20px] max-lg:w-full max-lg:h-[72px] max-lg:flex-row pt-[35px] pb-[35px] w-[96px] h-[760px] rounded-[20px] bg-[#161D2F] flex flex-col items-center justify-between max-mm:rounded-[0px]">
+        <div className=" flex max-lg:flex-row max-lg:w-full flex-col items-center max-lg:gap-[0px] gap-[60px]">
+          <img
+            className="w-[32px] max-mm:w-[25px] max-mm:h-[20px] h-[25px]"
+            src={MovieIcon}
+            alt="MovieIcon"
+          />
+          <div className=" flex flex-col max-lg:justify-center max-lg:flex-row max-lg:w-full gap-[30px]">
             <div className="cursor-pointer" onClick={AllClick}>
               <All isActive={active === 1} />
             </div>
@@ -45,7 +49,11 @@ function SideHeader({ ToSeries, ToMovie, ToAll, ToFavorite }) {
             </div>
           </div>
         </div>
-        <img src={Person} alt="" />
+        <img
+          src={Person}
+          alt="person"
+          className="max-mm:w-[24px] max-mm:h-[24px]"
+        />
       </div>
     </>
   );

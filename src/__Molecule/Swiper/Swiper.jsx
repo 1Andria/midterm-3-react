@@ -13,11 +13,11 @@ function SwiperCont({ Data, FavoriteMovies }) {
 
   return (
     <>
-      <div className="w-full h-auto flex flex-col gap-[25px] mt-[35px]">
-        <h1 className="text-[32px] text-white">Trending</h1>
-        <div className="w-full overflow-x-hidden h-[230px]  ">
+      <div className="w-full max-lg:ml-[10px] h-auto flex flex-col max-xl:gap-[10px] gap-[25px] mt-[35px] max-mm:mt-[10px] max-mm:mb-[10px]">
+        <h1 className="text-[32px] max-xl:text-[25px] text-white">Trending</h1>
+        <div className="w-full min-w-[760px]   max-h-[230px]  ">
           <Swiper
-            slidesPerView={3}
+            slidesPerView={2.6}
             spaceBetween={30}
             loop={true}
             className="w-full h-full"
@@ -27,7 +27,7 @@ function SwiperCont({ Data, FavoriteMovies }) {
                 <div
                   onMouseEnter={() => setHover(movie.title)}
                   onMouseLeave={() => setHover(null)}
-                  className="w-full cursor-pointer pt-[16px] pr-[24px] pl-[24px] pb-[24px]  h-full rounded-lg flex flex-col justify-between "
+                  className="w-full cursor-pointer pt-[16px] pr-[24px] max-xl:pl-[16px] max-mm:pl-[10px]  pl-[24px] pb-[24px]  h-full rounded-lg flex flex-col justify-between "
                   style={{
                     opacity: hover === movie.title ? 0.8 : 1,
                     backgroundImage: `url(${movie.thumbnail.trending.small})`,
@@ -58,7 +58,9 @@ function SwiperCont({ Data, FavoriteMovies }) {
                   </div>
                   <div className=" flex flex-col gap-[3px]">
                     <div className="flex items-center gap-[7px] ">
-                      <p className="text-[15px] text-white">{movie.year}</p>
+                      <p className="text-[15px] text-white max-mm:text-[12px]">
+                        {movie.year}
+                      </p>
                       <div className="w-[3px] h-[3px] rounded-[50%] bg-white"></div>
                       <img
                         src={
@@ -68,13 +70,17 @@ function SwiperCont({ Data, FavoriteMovies }) {
                         }
                         className="w-[12px] h-[12px] opacity-[0.7]"
                       />
-                      <p className="text-[15px] text-white">
+                      <p className="text-[15px] max-mm:text-[12px] text-white">
                         {movie.category === "Movie" ? "Movie" : "TV Series"}
                       </p>
                       <div className="w-[3px] h-[3px] rounded-[50%] bg-white"></div>
-                      <p className="text-[15px] text-white">{movie.rating}</p>
+                      <p className="text-[15px] text-white max-mm:text-[12px]">
+                        {movie.rating}
+                      </p>
                     </div>
-                    <h1 className="text-[24px] text-white">{movie.title}</h1>
+                    <h1 className="text-[24px] max-xl:text-[20px] max-mm:text-[14px] text-white">
+                      {movie.title}
+                    </h1>
                   </div>
                 </div>
               </SwiperSlide>

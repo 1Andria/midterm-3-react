@@ -53,18 +53,17 @@ function Movie({ Data }) {
     setMovies(updatedMovies);
     localStorage.setItem("movies", JSON.stringify(updatedMovies));
   }
-  console.log(searchValue);
 
   return (
     <>
-      <div className="pl-[32px] w-full h-screen overflow-y-auto bg-[#10141E] gap-[36px] justify-center  flex pt-[27px]">
+      <div className="pl-[32px] max-lg:pr-[20px] max-lg:pl-[20px] max-mm:pl-[0px] max-mm:pr-[0px] w-full h-auto min-h-screen overflow-y-auto bg-[#10141E] max-mm:gap-[15px] max-lg:gap-[25px] gap-[36px] justify-center max-lg:justify-start flex pt-[27px] max-mm:pt-[0px] max-mm:pb-[20px]  max-lg:flex-col">
         <SideHeader
           ToAll={ToAll}
           ToMovie={ToMovie}
           ToSeries={ToSeries}
           ToFavorite={ToFavorite}
         />
-        <div className="max-w-[1260px] w-full flex flex-col  ">
+        <div className="max-w-[1260px] w-full flex flex-col overflow-x-hidden   ">
           <Search setSearchValue={setSearchValue} />
           {all && <SwiperCont Data={Data} FavoriteMovies={FavoriteMovies} />}
           <MoviePlace
