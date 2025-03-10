@@ -22,7 +22,7 @@ function MoviePlace({
         {movie && searchValue.length === 0 && "Movies"}
         {serie && searchValue.length === 0 && "TV series"}
         {searchValue.length > 0 &&
-          `Found ${foundNumber} for  "${searchValue}"  `}
+          `Found ${foundNumber} results for  "${searchValue}"  `}
       </h1>
       <div className="w-full auto pr-[36px] max-lg:justify-center max-lg:gap-[20px] max-mm:gap-[15px] max-lg:pr-[0px] justify-start gap-[33px] flex flex-wrap">
         {searchValue.length > 0
