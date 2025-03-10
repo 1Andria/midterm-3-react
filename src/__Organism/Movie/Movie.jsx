@@ -65,7 +65,9 @@ function Movie({ Data }) {
         />
         <div className="max-w-[1260px] w-full flex flex-col overflow-x-hidden   ">
           <Search setSearchValue={setSearchValue} />
-          {all && <SwiperCont Data={Data} FavoriteMovies={FavoriteMovies} />}
+          {all && searchValue.length === 0 && (
+            <SwiperCont Data={Data} FavoriteMovies={FavoriteMovies} />
+          )}
           <MoviePlace
             Data={movies}
             all={all}

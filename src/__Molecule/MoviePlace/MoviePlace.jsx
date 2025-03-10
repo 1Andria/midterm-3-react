@@ -13,13 +13,16 @@ function MoviePlace({
   const filteredData = Data.filter((m) =>
     m.title.toLowerCase().includes(searchValue.toLowerCase())
   );
+  const foundNumber = filteredData.length;
+
   return (
     <>
       <h1 className="text-white max-mm:ml-[10px] max-mm:text-[20px] text-[32px] max-xl:mt-[0px] mt-[40px] max-mm:mb-[0px] mb-[32px]">
         {all && searchValue.length === 0 && "Recommended for you"}
         {movie && searchValue.length === 0 && "Movies"}
         {serie && searchValue.length === 0 && "TV series"}
-        {searchValue.length > 0 && "Results"}
+        {searchValue.length > 0 &&
+          `Found ${foundNumber} for  "${searchValue}"  `}
       </h1>
       <div className="w-full auto pr-[36px] max-lg:justify-center max-lg:gap-[20px] max-mm:gap-[15px] max-lg:pr-[0px] justify-start gap-[33px] flex flex-wrap">
         {searchValue.length > 0
